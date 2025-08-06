@@ -2,7 +2,10 @@ package edu.aagustini;
 
 public class App {
     public static void main(String[] args) {
-        Circulo c1 = new Circulo();
+        Circulo c1;
+
+        c1 = new Circulo();
+
         System.out.println(c1.toString());
 
         System.out.println("Area do c1: "+ c1.area());
@@ -18,6 +21,11 @@ public class App {
         c2.zoom(2);
         System.out.println(c2.toString());
 
+        // chamei de lista mas está errado
+        // estou usando só um array
+        // listas vão ser estudadas em ALEST I
+        // e aqui vamos usar a biblioteca de listas do java
+
         Circulo[] lista;
         lista = new Circulo[3];
 
@@ -31,7 +39,7 @@ public class App {
             System.out.println(c.toString());
         }
 
-        System.out.println("\nfor cool, descolado, legal, que preciso aprender a usar...");
+        System.out.println("\n foreach (cool, descolado, legal, que preciso aprender a usar...)");
         for( Circulo c : lista ){
             System.out.println(c.toString());
         }
