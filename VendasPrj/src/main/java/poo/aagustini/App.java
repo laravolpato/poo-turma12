@@ -15,6 +15,32 @@ public class App {
     
         System.out.println("Cadastro de Produtos: ");
         System.out.println(cadProd.relatorio());
+
+        Produto prod = cadProd.pesquisa(200);
+        if (prod == null)
+           System.out.println("produto 200 nao existe");
+        else 
+            System.out.println("Achou: "+prod.toString());
+
+        prod = cadProd.pesquisa(125);
+        if (prod == null)
+           System.out.println("produto 125 nao existe");
+        else 
+            System.out.println("Achou: "+prod.toString());
     
+        ItemVenda iv1 = new ItemVenda(10, prod);
+        System.out.println("\nItemVenda: " + iv1.toString());
+
+
+        Venda venda1 = new Venda();
+
+        venda1.inserir(10,prod);
+        // cuidado... só funciona se os produtos estiverem no cadastro
+        // caso contrário dará um erro de Null pointer...
+        venda1.inserir(cadProd.pesquisa(127));
+        venda1.inserir(cadProd.pesquisa(126));
+
+        System.out.println(venda1.fecharVenda());
+        
     }
 }

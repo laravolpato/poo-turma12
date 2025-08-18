@@ -25,6 +25,29 @@ public class CadastroProdutos {
     }
 
     public Produto pesquisa(int codigo) {
+        // usando for tradicional
+        for (int i = 0; i<lista.size();i++) {
+            // pega o produto da posicao i
+            Produto p = lista.get(i);
+            // verifica se é o que estou produrando
+            if ( p.getCodigo() == codigo) {
+                return p;
+            }
+
+            // ou sendo corajoso, inadequado para 
+            // primeiro semestre
+            //if ( lista.get(i).getCodigo() == codigo)
+            //    return lista.get(i);
+        }
+        // a linha a seguir (for each) faz exatamente
+        //.    o mesmo que as duas linhas acima
+        //for(Produto p : lista) {
+        //    if ( p.getCodigo() == codigo) {
+        //        return p;
+        //    }
+        //}
+
+        // passei por todos e não achei (depois do for)
         return null;
     }
 
