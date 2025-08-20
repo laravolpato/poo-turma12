@@ -24,7 +24,7 @@ public class CadastroProdutos {
         //lista.add( new Produto(codigo, nome, preco) );
     }
 
-    public Produto pesquisa(int codigo) {
+    public Produto pesquisar(int codigo) {
         // usando for tradicional
         for (int i = 0; i<lista.size();i++) {
             // pega o produto da posicao i

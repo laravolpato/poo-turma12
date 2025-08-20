@@ -3,31 +3,28 @@ package poo.aagustini;
 import java.util.ArrayList;
 
 public class Venda {
-    // tema (1) - alterar a classe para ter a
-    //.           referência para o cliente
-    // 
-    // private Cliente cliente;
-    
-    private ArrayList<ItemVenda> itens;
+    private Cliente cliente;
 
-    public Venda() {
+    private ArrayList<ItemVenda> itens;
+ 
+    public Venda(Cliente umCliente) {
         itens = new ArrayList<>();
+        this.cliente = umCliente;
     }
 
     public void inserir(Produto prod) {
-        ItemVenda iv = new ItemVenda(1, prod);
-        itens.add(iv);
+        ItemVenda item = new ItemVenda(1, prod);
+        itens.add(item);
     }
-
-    public void inserir(int qtde, Produto prod) {
-        ItemVenda iv = new ItemVenda(qtde, prod);
-        itens.add(iv);
+    
+    public void inserir(int quantidade, Produto prod) {
+        ItemVenda item = new ItemVenda(quantidade, prod);
+        itens.add(item);
     }
 
     public double valorTotal() {
         double total = 0;
 
-        // percorrendo com for each
         for (ItemVenda item : itens) {
             total = total + item.getValor();
         }
@@ -36,13 +33,22 @@ public class Venda {
     }
 
     public String fecharVenda() {
-        StringBuilder notaF = new StringBuilder("\nPOO Vendas \t Nota fiscal...\n");
+        // gera a nota de venda
+        StringBuilder notaF = new StringBuilder();
+                                   
+        notaF.append("\nNota de Venda (Exercício Vendas Prj) - POO \n");
+        notaF.append("\nCliente: ");
+        notaF.append(cliente.toString());
+        notaF.append("\n");
 
         for (ItemVenda item : itens) {
-            notaF.append("\t");
+            notaF.append("\n   ");
             notaF.append(item.toString());
-            notaF.append("\n");
         }
+
+        notaF.append(String.format("\n\n\t    Valor total: R$ %5.2f",this.valorTotal()));
+        
         return notaF.toString();
     }
+    
 }

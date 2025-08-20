@@ -2,45 +2,54 @@ package poo.aagustini;
 
 public class App {
     public static void main(String[] args) {
-        Produto p1 = new Produto(123,"Caneta", 4.5);
-        System.out.println(p1.toString());
+        Produto p1 = new Produto(123,"Lapis", 2.5);
+        System.out.println(p1);
 
-        CadastroProdutos cadProd = new CadastroProdutos();
+        // para usar o cadastro de produtos temos de "pegar" a instancia
+        //CadastroProdutos cadProd = CadastroProdutos.getInstance();
 
-        cadProd.cadastrar(p1);
-        cadProd.cadastrar(124, "Lapis preto", 2);
-        cadProd.cadastrar(125, "Lapis azul", 0.2);
-        cadProd.cadastrar(126, "Lapis vermelho", 12);
-        cadProd.cadastrar(127, "Caneta vermelha", 5);
-    
-        System.out.println("Cadastro de Produtos: ");
-        System.out.println(cadProd.relatorio());
+        // agora que tenho a instância posso usar...
+        //cadProd.cadastrar(p1);   // depois de criar o método cadastrar...
+        
+        CadastroProdutos cadProdutos = new CadastroProdutos();
+        cadProdutos.cadastrar(123, "Lapis", 2.5);
+        cadProdutos.cadastrar(124, "Caneta", 5);
+        cadProdutos.cadastrar(125, "Borracha", 4.5);
 
-        Produto prod = cadProd.pesquisa(200);
-        if (prod == null)
-           System.out.println("produto 200 nao existe");
-        else 
-            System.out.println("Achou: "+prod.toString());
+        System.out.println("\n");
+        System.out.println(cadProdutos.toString());
+        System.out.println();
 
-        prod = cadProd.pesquisa(125);
-        if (prod == null)
-           System.out.println("produto 125 nao existe");
-        else 
-            System.out.println("Achou: "+prod.toString());
-    
-        ItemVenda iv1 = new ItemVenda(10, prod);
-        System.out.println("\nItemVenda: " + iv1.toString());
+        Produto p = cadProdutos.pesquisar(123);
+        if ( p != null) {
+            System.out.println("\nAchou: "+p.toString());
+            // testando a classe ItemVenda
+            // só para teste, esta classe só "existe" 
+            //     dentro da classe Venda
+            ItemVenda iv1 = new ItemVenda(10, p);
+            System.out.println("ItemVenda: " + iv1.toString());
 
 
-        Venda venda1 = new Venda();
+        } else {
+            System.out.println("\nProduto 123 não está no cadastro");
+        }
 
-        venda1.inserir(10,prod);
-        // cuidado... só funciona se os produtos estiverem no cadastro
-        // caso contrário dará um erro de Null pointer...
-        venda1.inserir(cadProd.pesquisa(127));
-        venda1.inserir(cadProd.pesquisa(126));
+        p = cadProdutos.pesquisar(200);
+        if ( p != null) {
+            System.out.println("\nAchou: "+p.toString());
+        } else {
+            System.out.println("\nProduto 200 não está no cadastro");
+        }
+
+        Cliente cli1 = new Cliente(1,"Huguinho","Av. Brasil, 1");
+        System.out.println("\n");
+        Venda venda1 = new Venda(cli1);
+        venda1.inserir(10, cadProdutos.pesquisar(123));
+        venda1.inserir(2, cadProdutos.pesquisar(125));
+        venda1.inserir(cadProdutos.pesquisar(124));
 
         System.out.println(venda1.fecharVenda());
-        
+
+
     }
 }

@@ -20,11 +20,9 @@ public class ItemVenda {
 
     @Override
     public String toString() {
-        return String.format("%15s \t %d \t %.2f",
-                              prod.getNome(),
-                              this.quantidade,
-                              this.getValor() );
-
+        return String.format("%-10s \t %3d \t R$ %5.2f",
+                             prod.getNome(),
+                             quantidade,
+                             this.getValor());
     }
-
 }
