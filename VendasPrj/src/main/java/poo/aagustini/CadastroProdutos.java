@@ -12,6 +12,9 @@ public class CadastroProdutos {
         lista = new ArrayList<>();
     }
 
+    // método "cadastrar" tem sobrecarga
+    //.   ==> dependendo dos parâmetros usa um 
+    //        ou outro método
     public void cadastrar(Produto prod) {
         lista.add(prod);
     }

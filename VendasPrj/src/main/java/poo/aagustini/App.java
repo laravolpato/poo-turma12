@@ -50,6 +50,26 @@ public class App {
 
         System.out.println(venda1.fecharVenda());
 
+        ProdutoEE prodEE = new ProdutoEE(300, "Ferro de passar", 200, 180);
+        System.out.println("\n" + prodEE.toString());
 
+        ProdutoAlcoolico prodA = new ProdutoAlcoolico(500, "Korote azul", 10);
+        System.out.println("\n" + prodA.toString());
+        System.out.println("Preço ao consumidor: " + prodA.getPreco());
+
+        cadProdutos.cadastrar(prodEE);
+        cadProdutos.cadastrar(prodA);
+
+        System.out.println("\n\nRelatorio de produtos...");
+        System.out.println(cadProdutos.relatorio());
+
+        Cliente cli2 = new Cliente(2,"Zezinho","Av. Brasil, 1");
+        System.out.println("\n\n");
+        Venda venda2 = new Venda(cli2);
+        venda2.inserir(10, cadProdutos.pesquisar(500));
+        venda2.inserir(2, cadProdutos.pesquisar(125));
+        venda2.inserir(cadProdutos.pesquisar(300));
+
+        System.out.println(venda2.fecharVenda());
     }
 }
