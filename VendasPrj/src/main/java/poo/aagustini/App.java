@@ -41,7 +41,11 @@ public class App {
             System.out.println("\nProduto 200 não está no cadastro");
         }
 
-        Cliente cli1 = new Cliente(1,"Huguinho","Av. Brasil, 1");
+        Cliente cli1 = new Estudante(1,
+                                     "Huguinho",
+                                    "Av. Brasil, 1",
+                                    "111-11",
+                                    "PUCRS");
         System.out.println("\n");
         Venda venda1 = new Venda(cli1);
         venda1.inserir(10, cadProdutos.pesquisar(123));
@@ -50,26 +54,29 @@ public class App {
 
         System.out.println(venda1.fecharVenda());
 
-        ProdutoEE prodEE = new ProdutoEE(300, "Ferro de passar", 200, 180);
-        System.out.println("\n" + prodEE.toString());
+        ProdutoEE pEE = new ProdutoEE(323,"Ferro de passar", 200, 180);
+        System.out.println("\n\n"+ pEE);
 
-        ProdutoAlcoolico prodA = new ProdutoAlcoolico(500, "Korote azul", 10);
-        System.out.println("\n" + prodA.toString());
-        System.out.println("Preço ao consumidor: " + prodA.getPreco());
+        ProdutoAlcoolico pA = new ProdutoAlcoolico(523,"Korote", 10);
+        System.out.println("\n\n" + pA);
+        
+        System.out.println("\nValor de uma Korote: R$ " + pA.getPreco());
 
-        cadProdutos.cadastrar(prodEE);
-        cadProdutos.cadastrar(prodA);
+        cadProdutos.cadastrar(pEE);
+        cadProdutos.cadastrar(pA);
 
-        System.out.println("\n\nRelatorio de produtos...");
-        System.out.println(cadProdutos.relatorio());
 
-        Cliente cli2 = new Cliente(2,"Zezinho","Av. Brasil, 1");
-        System.out.println("\n\n");
+        System.out.println("\n- - - Cadastro de produtos - - -\n");
+        System.out.println(cadProdutos.toString());
+     
+        Cliente cli2 = new ClientePJ(2,"Biscoitos do Zé","Av. Brasil, 1","222/0002-2");
+        System.out.println("\n");
         Venda venda2 = new Venda(cli2);
-        venda2.inserir(10, cadProdutos.pesquisar(500));
-        venda2.inserir(2, cadProdutos.pesquisar(125));
-        venda2.inserir(cadProdutos.pesquisar(300));
+        venda2.inserir(20, cadProdutos.pesquisar(123));
+        venda2.inserir(10, cadProdutos.pesquisar(523));
+        venda2.inserir(cadProdutos.pesquisar(323));
 
         System.out.println(venda2.fecharVenda());
+
     }
 }
