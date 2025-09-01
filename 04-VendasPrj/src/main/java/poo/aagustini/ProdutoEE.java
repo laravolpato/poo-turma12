@@ -1,5 +1,7 @@
 package poo.aagustini;
 
+import java.time.LocalDate;
+
 // Herança...
 // extends --> ProdutoEE "é um tipo de " Produto
 public class ProdutoEE extends Produto {
@@ -24,6 +26,16 @@ public class ProdutoEE extends Produto {
     public int getDiasGarantia() {
         return diasGarantia;
     }
+
+    public String getGarantia() {
+        LocalDate hoje = LocalDate.now();
+        
+        return "\nProduto :"  + this.getNome() + "\n"+
+               "Garantia: " + this.diasGarantia + " dias\n" +
+               "Data compra: " + hoje + "\n"+
+               "Vence em: " + hoje.plusDays(diasGarantia);
+    }
+
 
     @Override
     public String toString() {

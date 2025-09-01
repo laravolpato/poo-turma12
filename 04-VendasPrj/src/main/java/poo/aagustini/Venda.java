@@ -47,7 +47,31 @@ public class Venda {
         }
 
         notaF.append(String.format("\n\n\t    Valor total: R$ %5.2f",this.valorTotal()));
-        
+        notaF.append("\n- - - - - - - - - - - - \"");
+
+        // quero imprimir a garantia dos produtos EE
+        for (ItemVenda item : itens) {
+            Produto prod = item.getProduto();
+            // como saber se prod é um EE
+            // --> instanceof : 
+            //.   tipo dinâmico (new) de prod é EE ou subclasse de EE?
+            if ( prod instanceof ProdutoEE) {
+                // se deu verdadiro "é um" EE e tem garantia
+                // getGarantia "não é visível no tipo estático Produto"
+                //notaF.append(prod.getGarantia());
+
+                // como eu sei que é um produtoEE
+                // faço um casting para coverter o formato
+                // e tornar o métido getGarantia acessível
+                ProdutoEE prodEE = (ProdutoEE) prod;
+                notaF.append(prodEE.getGarantia());
+                notaF.append("\n- - - - - - - - - - - -\n");
+
+
+            }
+
+        }
+
         return notaF.toString();
     }
     

@@ -18,6 +18,10 @@ public class ItemVenda {
         return quantidade * prod.getPreco();
     }
 
+    public Produto getProduto() {
+        return prod;
+    }
+
     @Override
     public String toString() {
         return String.format("%-10s \t %3d \t R$ %5.2f",

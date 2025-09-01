@@ -1,6 +1,10 @@
 package poo.aagustini;
 
-public class Cliente {
+// abstract - classe é um repositório das
+//.  características comuns de todos tipos de cliente
+//.  mas não faz sentido ser instanciada 
+//.  no contexto do problema ser
+public abstract class Cliente {
     private int codigo;
     private String nome;
     private String endereco;
@@ -26,6 +30,10 @@ public class Cliente {
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
+
+    // método abstrato
+    // -> obriga que todas as subclasses o implementem
+    public abstract String getID();
 
     @Override
     public String toString() {
