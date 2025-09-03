@@ -4,12 +4,33 @@ import java.util.ArrayList;
 
 public class Venda {
     private Cliente cliente;
-
     private ArrayList<ItemVenda> itens;
+
+    // Venda também contém um número de nota fiscal...
+    private int numeroNF;
+
+    // vou guardar o número da próxima nota
+    // primeira nota será a de número 1000
+    // static - atributo não pertence à instância
+    //          mas ao conjunto de instâncias de Venda
+    // inicialização ( ... = 1000) só acontece uma vez
+    //.    ao criar a primeira instância de Venda
+
+    private static int proximoNumeroNF = 1000;
+    
  
     public Venda(Cliente umCliente) {
         itens = new ArrayList<>();
         this.cliente = umCliente;
+
+        this.numeroNF = Venda.proximoNumeroNF;
+
+        Venda.proximoNumeroNF = Venda.proximoNumeroNF + 5;
+
+    }
+
+    public static int getProximoNumeroNF() {
+        return proximoNumeroNF;
     }
 
     public void inserir(Produto prod) {
@@ -36,7 +57,8 @@ public class Venda {
         // gera a nota de venda
         StringBuilder notaF = new StringBuilder();
                                    
-        notaF.append("\nNota de Venda (Exercício Vendas Prj) - POO \n");
+        notaF.append("\nNota de Venda (Exercício Vendas Prj) - POO " +
+                         " \t Nota Fiscal: " + this.numeroNF + "\n" );
         notaF.append("\nCliente: ");
         notaF.append(cliente.toString());
         notaF.append("\n");

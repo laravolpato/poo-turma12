@@ -98,5 +98,9 @@ public class App {
 
         System.out.println("\n\nresultado da pesquisa 2:");
         System.out.println( c2.toString() );
+
+        System.out.println("\n\nPróxima venda será nro: " +
+                            Venda.getProximoNumeroNF());
+
     }
 }
