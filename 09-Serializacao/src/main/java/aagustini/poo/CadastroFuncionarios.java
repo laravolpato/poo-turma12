@@ -109,7 +109,8 @@ public class CadastroFuncionarios {
 
         // GSON tem um problema com desserialização de genéricos
         // ver: https://sites.google.com/site/gson/gson-user-guide#TOC-Collections-Examples
-        Type funcType = new TypeToken<ArrayList<Funcionario>>() {}.getType();
+        // Type funcType = new TypeToken<ArrayList<Funcionario>>() {}.getType();
+       TypeToken<ArrayList<Funcionario>> funcType = new TypeToken<ArrayList<Funcionario>>(){};
 
         try {
 

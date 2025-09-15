@@ -7,14 +7,14 @@ public class App {
 
         cad = CadastroFuncionarios.getInstance();
 
-        /* 
+        
         cad.add(new Funcionario(100,"Zezinho",1000));
 
         cad.add(new Funcionario(200,"Huginho",2000));
         cad.add(new Funcionario(300,"Luizinho",3000));
 
         cad.saveFile("funcionarios.txt");
-        */
+        
 
         cad.cleanAll();
         cad.readFile("funcionarios.txt");
