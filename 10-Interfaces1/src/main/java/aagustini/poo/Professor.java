@@ -14,7 +14,7 @@ public class Professor implements Salario {
     public void setMatricula(int m) { matricula = m; }
 
     public float getSalarioLiquido() {
-        float salBruto = valorHora*cargaHoraria*(float)4.5;
+        float salBruto = (float)(valorHora*cargaHoraria*4.5);
         return ( salBruto - (salBruto*(float)0.08) );
     }
 
