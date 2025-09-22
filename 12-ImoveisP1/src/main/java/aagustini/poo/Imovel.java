@@ -18,6 +18,8 @@ public abstract class Imovel {
     public Imovel(String nome,
                   int areaC,
                   Geo geoLoc) {
+        if ( nome == null || nome == "" )
+            throw new IllegalArgumentException("nome nao pode ser nulo");
         this.proprietario = nome;
         this.areaConstruida = areaC;
         this.geoLocalizacao = geoLoc;
@@ -36,7 +38,7 @@ public abstract class Imovel {
     
     @Override
     public String toString() {
-        return String.format("Proprietario: %s  Imposto: R$ %.ef",
+        return String.format("Proprietario: %s  Imposto: R$ %.2f",
                             this.proprietario,
                             this.calculaImposto());
 
