@@ -28,15 +28,36 @@ public class App {
          *      - escreva as consultas solicitadas utilizando
          *        apenas expressões lambda e operações de agregação
           */
+
         System.out.println("\n1. Funcionários do setor de vendas:");
+        List<Pessoa> l2 = lista.stream()
+                    .filter(p -> p.getDpto() == Departamento.VENDAS)
+                    .toList();
+                    
+        l2.forEach (System.out::println);
 
         System.out.println("\n2. Funcionários do setor de vendas com idade entre 20 e 30 anos");
+        List<Pessoa> l3 = lista.stream()
+                    .filter(p -> p.getDpto() == Departamento.VENDAS)
+                    .filter(p -> p.getIdade() >= 20
+                    && p.getIdade() <= 30)
+                    .toList();
+
+        l3.forEach (System.out::println);
 
         System.out.println("\n3. Nomes (em maiúsculas) dos funcionários do setor de vendas");
+        lista.stream()
+                .filter(p -> p.getDpto() == Departamento.VENDAS)
+                .map(p -> p.getNome().toUpperCase())
+                .forEach(System.out::println);
 
         System.out.println("\n4. Todos os gerentes:");
+        lista.stream()
+                .filter(p -> p.getDpto() == Departamento.GERENCIA)
+                .forEach(System.out::println);
 
         System.out.println("\n5. Idade média dos gerentes:");
+
 
         System.out.println("\n6. Funcionarios ordenados pelo código:");
 
