@@ -1,7 +1,9 @@
 package aagustini.poo;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class App {
 
@@ -57,16 +59,33 @@ public class App {
                 .forEach(System.out::println);
 
         System.out.println("\n5. Idade média dos gerentes:");
-
+        double mediaIdadeGerentes = lista.stream()
+                .filter(p -> p.getDpto() == Departamento.GERENCIA)
+                .mapToInt(Pessoa::getIdade)
+                .average()
+                .orElse(0.0);
+        System.out.println(mediaIdadeGerentes);
 
         System.out.println("\n6. Funcionarios ordenados pelo código:");
+        lista.stream()
+                .sorted(Comparator.comparingInt(Pessoa::getCodigo))
+                .forEach(System.out::println);
 
         System.out.println("\n7. Funcionários ordenados pela idade+nome:");
+        lista.stream()
+                .sorted(Comparator.comparingInt(Pessoa::getIdade).thenComparing(Pessoa::getNome))
+                .forEach(System.out::println);
 
         System.out.println("\n8. Criar uma nova lista apenas com os funcionarios do financeiro:");
+        List<Pessoa> financeiro = lista.stream()
+                .filter(p -> p.getDpto() == Departamento.FINANCEIRO)
+                .collect(Collectors.toList());
+        financeiro.forEach(System.out::println);
 
         System.out.println("\n9. Nome e setor da pessoa mais jovem:");
-
+        lista.stream()
+                .min(Comparator.comparingInt(Pessoa::getIdade))
+                .ifPresent(p -> System.out.println("Nome: " + p.getNome() + ", Setor: " + p.getDpto()));
 
     }
 }
